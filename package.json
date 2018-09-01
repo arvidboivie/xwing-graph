@@ -1,0 +1,27 @@
+{
+  "name": "x-wing-graph",
+  "version": "1.0.0",
+  "description": "A graph for X-Wing Second Edition data",
+  "main": "index.js",
+  "scripts": {
+    "dev-server": "npx ts-node src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "@types/graphql": "^0.13.4",
+    "@types/node": "^10.9.4",
+    "@types/ws": "^6.0.0",
+    "graphql-yoga": "^1.16.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "class-transformer": "^0.1.9",
+    "reflect-metadata": "^0.1.12",
+    "type-graphql": "^0.13.1",
+    "xwing-data-module": "git+https://github.com/arvidboivie/xwing-data-module.git"
+  }
+}
