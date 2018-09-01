@@ -1,5 +1,9 @@
 import { ObjectType, Field, Int } from "type-graphql";
 import { ShipAbility } from "./shipability.type";
+import { ICharge } from "../interfaces/charge.interface";
+import { Force } from "./force.type";
+import { Charge } from "./charge.type";
+import { Type } from "class-transformer";
 
 @ObjectType()
 export class Pilot {
@@ -33,4 +37,12 @@ export class Pilot {
 
     @Field(type => ShipAbility, { nullable: true })
     shipAbility: ShipAbility;
+
+    @Field(type => Force, { nullable: true })
+    @Type(() => Force)
+    force: Force;
+
+    @Field(type => Charge, { nullable: true})
+    @Type(() => Charge)
+    charges: Charge;
 }

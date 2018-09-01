@@ -1,14 +1,25 @@
 import { ObjectType, Field, Arg } from "type-graphql";
 import { Faction } from "../enums/faction.enum";
 import { Action } from "./action.type";
-import { plainToClass } from "class-transformer";
+import { Type, Expose } from "class-transformer";
 import { Size } from "../enums/size.enum";
 import { Pilot } from "./pilot.type";
+import { ShipType } from "../enums/shiptype.enum";
 
 @ObjectType({ description: "Ship type" })
 export class Ship {
-  @Field()
-  name: string;
+
+  // Doing a switcharoo on this and shiptype,
+  // because the name field is automagically cast to enum when imported from data module,
+  // and I couldn't figure out how to create enum from the string value.
+  @Field(type => ShipType, { name: "shipType" })
+  name: ShipType;
+
+  // See comment on name
+  @Field(type => String, { name: "name" })
+  typeToString(): string {
+    return this.name;
+  }
 
   @Field(type => Size)
   size: Size;
@@ -19,49 +30,11 @@ export class Ship {
   @Field(type => [String])
   dial: string[];
 
+  @Field(type => [Action], { nullable: true })
+  @Type(() => Action)
   actions: any[];
 
   @Field(type => [Pilot])
+  @Type(() => Pilot)
   pilots: Pilot[];
-
-  @Field(type => [Action], { nullable: true })
-  availableActions(): Action[] {
-    if (this.actions) {
-      const realActions = plainToClass(Action, this.actions);
-        
-      return realActions;
-    } else {
-      return [];
-    }
-  };
-
-  // @Field(type => [Action], { nullable: true })
-  // actions: Action[];
-
-  // @Field(type => String, { nullable: true, deprecationReason: "Use `description` field instead" })
-  // get specification(): string | undefined {
-  //   return this.description;
-  // }
-
-  // @Field({ nullable: true, description: "The recipe description with preparation info" })
-  // description?: string;
-
-  // @Field(type => [Int])
-  // ratings: number[];
-
-  // @Field()
-  // creationDate: Date;
-
-  // @Field(type => Int)
-  // ratingsCount: number;
-
-  // @Field(type => Float, { nullable: true })
-  // get averageRating(): number | null {
-  //   const ratingsCount = this.ratings.length;
-  //   if (ratingsCount === 0) {
-  //     return null;
-  //   }
-  //   const ratingsSum = this.ratings.reduce((a, b) => a + b, 0);
-  //   return ratingsSum / ratingsCount;
-  // }
 }
