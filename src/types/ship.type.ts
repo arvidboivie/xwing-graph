@@ -5,6 +5,7 @@ import { Type, Expose } from "class-transformer";
 import { Size } from "../enums/size.enum";
 import { Pilot } from "./pilot.type";
 import { ShipType } from "../enums/shiptype.enum";
+import { Stats } from "./stats.type";
 
 @ObjectType({ description: "Ship type" })
 export class Ship {
@@ -23,6 +24,9 @@ export class Ship {
 
   @Field(type => Size)
   size: Size;
+
+  @Field(type => [Stats])
+  stats: Stats[];
 
   @Field(type => Faction)
   faction: Faction;
