@@ -1,7 +1,6 @@
 import { Ship } from '../types/ship.type';
 import { Resolver, Query } from "type-graphql";
 import { plainToClass } from 'class-transformer';
-import { Pilot } from '../types/pilot.type';
 
 @Resolver(of => Ship)
 export class ShipResolver {
@@ -11,9 +10,4 @@ export class ShipResolver {
     ships(): Ship[] {
         return this.shipList;
     }
-
-    // @FieldResolver()
-    // actions(@Root() ship: Ship): Action[] {
-    //     return plainToClass(Action, ship.actions);
-    // }
 }

@@ -1,6 +1,5 @@
 import { ObjectType, Field, Int } from "type-graphql";
 import { ShipAbility } from "./shipability.type";
-import { ICharge } from "../interfaces/charge.interface";
 import { Force } from "./force.type";
 import { Charge } from "./charge.type";
 import { Type } from "class-transformer";
