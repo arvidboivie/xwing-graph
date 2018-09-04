@@ -15,7 +15,7 @@ export class Ship {
   name: string;
 
   @Field(type => ShipType)
-  typeToString(): ShipType {
+  type(): ShipType {
     return this.name as ShipType;
   }
 
