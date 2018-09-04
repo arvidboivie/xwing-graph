@@ -1,25 +1,22 @@
-import { ObjectType, Field, Arg } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
 import { Faction } from "../enums/faction.enum";
 import { Action } from "./action.type";
-import { Type, Expose } from "class-transformer";
+import { Type } from "class-transformer";
 import { Size } from "../enums/size.enum";
 import { Pilot } from "./pilot.type";
 import { ShipType } from "../enums/shiptype.enum";
 import { Stats } from "./stats.type";
+import { Maneuver } from "./maneuver.type";
 
 @ObjectType({ description: "Ship type" })
 export class Ship {
 
-  // Doing a switcharoo on this and shiptype,
-  // because the name field is automagically cast to enum when imported from data module,
-  // and I couldn't figure out how to create enum from the string value.
-  @Field(type => ShipType, { name: "shipType" })
-  name: ShipType;
+  @Field(type => String)
+  name: string;
 
-  // See comment on name
-  @Field(type => String, { name: "name" })
-  typeToString(): string {
-    return this.name;
+  @Field(type => ShipType)
+  typeToString(): ShipType {
+    return this.name as ShipType;
   }
 
   @Field(type => Size)
@@ -31,8 +28,19 @@ export class Ship {
   @Field(type => Faction)
   faction: Faction;
 
-  @Field(type => [String])
+  @Field(type => [String], { name: 'dialStrings' })
   dial: string[];
+
+  @Field(type => [Maneuver])
+  dialManeuvers(): Maneuver[] {
+    let dialManeuvers: Maneuver[] = [];
+
+    for (let dial of this.dial) {
+      dialManeuvers.push(new Maneuver(dial));
+    }
+
+    return dialManeuvers;
+  }
 
   @Field(type => [Action], { nullable: true })
   @Type(() => Action)
