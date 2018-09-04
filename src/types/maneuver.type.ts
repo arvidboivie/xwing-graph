@@ -1,7 +1,6 @@
 import { Field, Int, ObjectType } from "type-graphql";
 import { Bearing } from "../enums/bearing.enum";
 import { Difficulty } from "../enums/difficulty.enum";
-import { getEnumValuesMap } from "../helpers/helpers";
 
 @ObjectType({ description: "Maneuver" })
 export class Maneuver {
@@ -26,4 +25,8 @@ export class Maneuver {
 
     @Field(type => Difficulty)
     difficulty: Difficulty;
+
+    public toString = () : string => {
+        return this.speed + this.bearing + this.difficulty[0]
+    }
 }
