@@ -4,7 +4,7 @@
   "description": "A graph for X-Wing Second Edition data",
   "main": "index.js",
   "scripts": {
-    "dev-server": "npx ts-node src/index.ts",
+    "dev-server": "npx ts-node src/server.ts",
     "build": "tsc --project tsconfig.json"
   },
   "author": "",
