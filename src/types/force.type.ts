@@ -3,6 +3,6 @@ import { ObjectType } from "type-graphql";
 
 @ObjectType({ implements: ICharge })
 export class Force implements ICharge {
-    value: number;
-    recovers: number;
+  value: number;
+  recovers: number;
 }

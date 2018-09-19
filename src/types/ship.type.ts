@@ -10,7 +10,6 @@ import { Maneuver } from "./maneuver.type";
 
 @ObjectType({ description: "Ship type" })
 export class Ship {
-
   @Field(type => String)
   name: string;
 
@@ -28,7 +27,7 @@ export class Ship {
   @Field(type => Faction)
   faction: Faction;
 
-  @Field(type => [String], { name: 'dialStrings' })
+  @Field(type => [String], { name: "dialStrings" })
   dial: string[];
 
   @Field(type => [Maneuver])

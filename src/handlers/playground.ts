@@ -6,7 +6,7 @@ import { APIGatewayEvent, Context, Callback } from "aws-lambda";
 
 // build TypeGraphQL executable schema
 const schema = buildSchemaSync({
-    resolvers: [ShipResolver],
+  resolvers: [ShipResolver]
 });
 
 // Create GraphQL server

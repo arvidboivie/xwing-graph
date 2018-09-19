@@ -5,7 +5,7 @@ import { buildSchemaSync } from "type-graphql";
 
 // build TypeGraphQL executable schema
 const schema = buildSchemaSync({
-    resolvers: [ShipResolver],
+  resolvers: [ShipResolver]
 });
 
 // Create GraphQL server

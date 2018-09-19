@@ -1,25 +1,25 @@
 import { registerEnumType } from "type-graphql";
 
 export enum UpgradeSlot {
-    ASTROMECH = "astromech",
-    CANNON = "cannon",
-    CONFIGURATION = "configuration",
-    CREW = "crew",
-    DEVICE = "device",
-    FORCE_POWER = "force_power",
-    GUNNER = "gunner",
-    ILLICIT = "illicit",
-    MISSILE = "missile",
-    MODIFICATION = "modification",
-    SENSOR = "sensor",
-    TALENT = "talent",
-    TECH = "tech",
-    TITLE = "title",
-    TORPEDO = "torpedo",
-    TURRET= "turret"
+  ASTROMECH = "Astromech",
+  CANNON = "Cannon",
+  CONFIGURATION = "Configuration",
+  CREW = "Crew",
+  DEVICE = "Device",
+  FORCE_POWER = "Force Power",
+  GUNNER = "Gunner",
+  ILLICIT = "Illicit",
+  MISSILE = "Missile",
+  MODIFICATION = "Modification",
+  SENSOR = "Sensor",
+  TALENT = "Talent",
+  TECH = "Tech",
+  TITLE = "Title",
+  TORPEDO = "Torpedo",
+  TURRET = "Turret"
 }
 
 registerEnumType(UpgradeSlot, {
-    name: "UpgradeSlot",
-    description: "Upgrade slots",
+  name: "UpgradeSlot",
+  description: "Upgrade slots"
 });

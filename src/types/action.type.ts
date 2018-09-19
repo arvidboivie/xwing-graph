@@ -5,14 +5,13 @@ import { Type } from "class-transformer";
 
 @ObjectType()
 export class Action {
-    
-    @Field(type => Difficulty)
-    difficulty: Difficulty;
-    
-    @Field(type => ActionEnum)
-    type: ActionEnum;
+  @Field(type => Difficulty)
+  difficulty: Difficulty;
 
-    @Type(() => Action)
-    @Field(type => Action, {nullable: true})
-    linked?: Action;
+  @Field(type => ActionEnum)
+  type: ActionEnum;
+
+  @Type(() => Action)
+  @Field(type => Action, { nullable: true })
+  linked?: Action;
 }
