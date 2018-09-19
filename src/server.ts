@@ -2,11 +2,12 @@ import "reflect-metadata";
 import { GraphQLServer, Options } from "graphql-yoga";
 import { ShipResolver } from "./resolvers/ship.resolver";
 import { buildSchema, buildSchemaSync } from "type-graphql";
+import { UpgradeResolver } from "./resolvers/upgrade.resolver";
 
 async function bootstrap() {
     // build TypeGraphQL executable schema
     const schema = buildSchemaSync({
-        resolvers: [ShipResolver],
+        resolvers: [ShipResolver, UpgradeResolver],
     });
 
     // Create GraphQL server
